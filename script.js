@@ -4,7 +4,7 @@ let total = 0;
 let gastos = [];
 let proximoId = 1;
 
-// Formata valores em reais
+// Formata os valores em reais
 function formatarMoeda(valor) {
     return valor.toLocaleString("pt-BR", {
         style: "currency",
@@ -20,12 +20,18 @@ function adicionarGasto() {
     const descricao = campoDescricao.value.trim();
     const valor = Number(campoValor.value);
 
-    if (descricao === "" || !Number.isFinite(valor) || valor <= 0) {
+    // Valida os campos
+    if (
+        descricao === "" ||
+        campoValor.value.trim() === "" ||
+        !Number.isFinite(valor) ||
+        valor <= 0
+    ) {
         alert("Preencha a descrição e informe um valor maior que zero!");
         return;
     }
 
-    // Registra o gasto
+    // Cria o gasto
     const gasto = {
         id: proximoId++,
         descricao: descricao,
@@ -34,7 +40,7 @@ function adicionarGasto() {
 
     gastos.push(gasto);
 
-    // Atualiza o saldo e o total
+    // Atualiza os valores
     total += valor;
     saldo -= valor;
 
@@ -46,9 +52,11 @@ function adicionarGasto() {
     campoDescricao.focus();
 }
 
-// Exclui um gasto pelo seu identificador
+// Exclui um gasto
 function excluirGasto(id) {
-    const indice = gastos.findIndex(gasto => gasto.id === id);
+    const indice = gastos.findIndex(
+        gasto => gasto.id === id
+    );
 
     if (indice === -1) {
         return;
@@ -56,10 +64,10 @@ function excluirGasto(id) {
 
     const gastoRemovido = gastos[indice];
 
-    // Devolve o valor ao saldo
+    // Devolve o dinheiro ao saldo
     saldo += gastoRemovido.valor;
 
-    // Subtrai o valor do total gasto
+    // Atualiza o total gasto
     total -= gastoRemovido.valor;
 
     // Remove o gasto da lista
@@ -68,7 +76,7 @@ function excluirGasto(id) {
     atualizarTela();
 }
 
-// Atualiza a lista, o saldo e o total
+// Atualiza a lista e os valores
 function atualizarTela() {
     const lista = document.getElementById("listaGastos");
 
@@ -88,9 +96,11 @@ function atualizarTela() {
         valor.className = "gasto-valor";
         valor.textContent = formatarMoeda(gasto.valor);
 
+        // Cria o botão de exclusão
         const botaoExcluir = document.createElement("button");
         botaoExcluir.className = "botao-excluir";
         botaoExcluir.textContent = "Excluir";
+
         botaoExcluir.setAttribute(
             "aria-label",
             "Excluir gasto: " + gasto.descricao
@@ -100,6 +110,7 @@ function atualizarTela() {
             excluirGasto(gasto.id);
         });
 
+        // Organiza os elementos
         informacoes.appendChild(descricao);
         informacoes.appendChild(valor);
 
@@ -109,10 +120,20 @@ function atualizarTela() {
         lista.appendChild(item);
     });
 
-    // Atualiza os valores exibidos
+    // Atualiza o saldo
     document.getElementById("saldo").textContent =
         formatarMoeda(saldo);
 
+    // Atualiza o total gasto
     document.getElementById("total").textContent =
         formatarMoeda(total);
+
+    // Mostra ou esconde o aviso de saldo baixo
+    const aviso = document.getElementById("avisoSaldo");
+
+    if (saldo < 100) {
+        aviso.hidden = false;
+    } else {
+        aviso.hidden = true;
+    }
 }
