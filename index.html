@@ -17,11 +17,18 @@
 
         <h1>💰 Meu Controle de Gastos</h1>
 
+        <!-- Saldo disponível -->
         <section class="saldo">
             <p>Saldo disponível</p>
             <h2 id="saldo">R$ 500,00</h2>
         </section>
 
+        <!-- Aviso de saldo baixo -->
+        <div id="avisoSaldo" class="aviso-saldo" role="status" hidden>
+            ⚠️ Atenção! Seu saldo está ficando baixo.
+        </div>
+
+        <!-- Formulário de gastos -->
         <section class="formulario">
 
             <input
@@ -47,8 +54,10 @@
 
         <h3>Meus gastos</h3>
 
+        <!-- Lista de gastos -->
         <div id="listaGastos"></div>
 
+        <!-- Total gasto -->
         <section class="total">
             <p>Total gasto</p>
             <h2 id="total">R$ 0,00</h2>
