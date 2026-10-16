@@ -70,21 +70,6 @@ h3 {
     letter-spacing: -0.02em;
 }
 
-/* Aviso de saldo baixo */
-.aviso-saldo {
-    background: #fff0d6;
-    color: #8a4b08;
-    border: 1px solid #f0c36d;
-    border-radius: 10px;
-    padding: 14px 16px;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.aviso-saldo[hidden] {
-    display: none;
-}
-
 /* Formulário */
 .formulario {
     background: var(--card);
