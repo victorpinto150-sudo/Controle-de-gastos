@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meu Controle de Gastos</title>
+
+    <!-- Importa o CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1>💰 Meu Controle de Gastos</h1>
+
+        <!-- Saldo disponível -->
+        <section class="saldo">
+            <p>Saldo disponível</p>
+            <h2 id="saldo">R$ 500,00</h2>
+        </section>
+
+        <!-- Formulário do gasto -->
+        <section class="formulario">
+
+            <input
+                type="text"
+                id="descricao"
+                placeholder="Descrição do gasto">
+
+            <input
+                type="number"
+                id="valor"
+                placeholder="Valor"
+                min="0"
+                step="0.01"
+                inputmode="decimal">
+
+            <button onclick="adicionarGasto()">
+                Adicionar gasto
+            </button>
+
+        </section>
+
+        <h3>Meus gastos</h3>
+
+        <!-- Lista de gastos -->
+        <div id="listaGastos"></div>
+
+        <!-- Total dos gastos -->
+        <section class="total">
+            <p>Total gasto</p>
+            <h2 id="total">R$ 0,00</h2>
+        </section>
+
+    </main>
+
+    <!-- Importa o JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

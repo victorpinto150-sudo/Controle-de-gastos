@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+:root {
+    --fundo: #eef1ec;
+    --card: #ffffff;
+    --tinta: #1c2a26;
+    --suave: #6b7a74;
+    --linha: #e3e8e4;
+    --verde: #0f3d33;
+    --verde-claro: #b9e4cf;
+    --vermelho: #c2413b;
+    --raio: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--fundo);
+    color: var(--tinta);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 32px 16px;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-self: flex-start;
+}
+
+h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Saldo: destaque principal */
+.saldo {
+    background: var(--verde);
+    color: white;
+    padding: 28px 24px;
+    border-radius: var(--raio);
+}
+
+.saldo p {
+    color: var(--verde-claro);
+    font-size: 0.95rem;
+}
+
+.saldo h2 {
+    margin-top: 6px;
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* Formulário */
+.formulario {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--raio);
+    display: grid;
+    grid-template-columns: 1fr 130px;
+    gap: 10px;
+}
+
+.formulario button {
+    grid-column: 1 / -1;
+}
+
+input {
+    padding: 13px 14px;
+    border: 1.5px solid var(--linha);
+    border-radius: 10px;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--tinta);
+    background: #fafbfa;
+    min-width: 0;
+}
+
+input::placeholder {
+    color: #9aa7a1;
+}
+
+input:focus,
+button:focus-visible {
+    outline: 3px solid var(--verde-claro);
+    border-color: var(--verde);
+}
+
+button {
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    background: var(--verde);
+    color: white;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+}
+
+button:hover {
+    background: #16574a;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Lista de gastos */
+h3 {
+    margin-bottom: -8px;
+}
+
+#listaGastos {
+    background: var(--card);
+    border-radius: var(--raio);
+    padding: 4px 20px;
+}
+
+#listaGastos:empty {
+    padding: 28px 20px;
+    text-align: center;
+}
+
+#listaGastos:empty::before {
+    content: "Nenhum gasto ainda. Adicione o primeiro acima.";
+    color: var(--suave);
+    font-size: 0.95rem;
+}
+
+.gasto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--linha);
+}
+
+.gasto:last-child {
+    border-bottom: none;
+}
+
+.gasto span:last-of-type,
+.gasto strong {
+    font-weight: 700;
+    color: var(--vermelho);
+    white-space: nowrap;
+}
+
+/* Total */
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 4px 8px;
+}
+
+.total p {
+    color: var(--suave);
+}
+
+.total h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--vermelho);
+}
+
+@media (max-width: 400px) {
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+
+    .saldo h2 {
+        font-size: 2.2rem;
+    }
+}
